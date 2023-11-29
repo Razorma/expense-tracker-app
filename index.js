@@ -48,35 +48,79 @@ app.use(cookieParser());
 
 app.get('/', async function(req,res,next){
     try {
-        // id | category_type
-//     ----+---------------
-//       1 | weekly
-//       2 | monthly
-//       3 | weekday
-//       4 | weekend
-//       5 | once-off
-//       6 | daily 
-        let money = 0
-        const Daily = await expense.expensesForCategory(6)         
-        const Weekly = await expense.expensesForCategory(1) 
-        const Weekday = await expense.expensesForCategory(3) 
-        const Weekend = await expense.expensesForCategory(4) 
-        const OnceOff = await expense.expensesForCategory(5) 
-        const Monthly = await expense.expensesForCategory(2) 
-        console.log("lolo")
+      //initalise a value for the empty expense
+       let money = 0
+
+       //get all the money from the database function
+        const Daily = await expense.expensesTotalForCategory(6) ||money.toFixed(2)        
+        const Weekly = await expense.expensesTotalForCategory(1) ||money.toFixed(2) 
+        const Weekday = await expense.expensesTotalForCategory(3) ||money.toFixed(2) 
+        const Weekend = await expense.expensesTotalForCategory(4) ||money.toFixed(2) 
+        const OnceOff = await expense.expensesTotalForCategory(5) ||money.toFixed(2) 
+        const Monthly = await expense.expensesTotalForCategory(2) ||money.toFixed(2) 
+
+
+        //get the total for all the days
         const Total = await expense.categoryTotals() || money.toFixed(2)
-        res.render('home',{ Total,Daily,Weekly, Weekday, Weekend,OnceOff,Monthly})
+
+        //render the home with the data
+        res.render('home',{ 
+          Total,
+          daily:Daily,
+          weekly:Weekly, 
+          weekday:Weekday, 
+          weekend:Weekend,
+          onceOff:OnceOff,
+          monthly:Monthly
+        })
     } catch (error) {
         console.log(error.message)
         res.render('home')
     }
     
 })
-app.post('/',function(req,res,next){
-    const {} = req.body
-    res.render('home')
+app.post('/',async function(req,res,next){
+  //get the input data from the body
+    const {description,amount,cadegory} = req.body
+    try {
+      //get the addExpense function to add expenses
+      await expense.addExpense(description,parseFloat(cadegory), amount,amount)
+    } catch (error) {
+      console.log(error)
+    }
+    
+    res.redirect('/')
 })
 
+app.get('/expenses', async function (req, res, next) {
+ 
+  try {
+    //all the expenses for the all expense function
+   const allExpenses = await expense.allExpenses()
+    res.render('expenses', {allExpenses })
+  } catch (error) {
+    console.log(error.message)
+    res.render('expenses')
+  }
+
+
+})
+
+app.post('/expenses', async function (req, res, next) {
+  //get the id from the body
+  const expenseId = req.body.expenseId
+ 
+  try { 
+    //get delete expense function to pass the is being deleted
+    await expense.deleteExpense(expenseId)
+    res.redirect('/expenses')
+  } catch (error) {
+    console.log(error.message)
+    res.redirect('expenses')
+  }
+
+
+})
 
 
 

@@ -2,7 +2,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    outline: 1px solid red;
+    /* outline: 1px solid red; */
 }
 body{
     min-height: 100vh;
@@ -20,5 +20,5 @@ button{
     font-weight: 900;
     color:white;
     padding: 5px;
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }

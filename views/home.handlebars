@@ -1,6 +1,6 @@
 <main class="container-fluid p-0 m-0">
     <h1 class="text-center h3">Expense Tracker App</h1>
-    <form class="add-expense container ">
+    <form class="add-expense container mb-5" action="/" method="post">
         <p class="h5">Add Expense</p>
         <div class="form-group m-0 mt-2">
           <label for="description ">Description</label>
@@ -23,11 +23,11 @@
             <option value="2" data-name="monthly">Monthly</option>
           </select>
         </div>
-        <button type="submit">Add Experiance</button>
+        <button type="submit" class="mt-5">Add Experiance</button>
     </form>
     <div class="expense-response container">
-        <h4 class="d-flex justify-content-between">Total Expenses <span class="text-end">{{Total}}</span></h4>
-        <h5>Expence Summary Per Category</h5>
+        <h4 class="d-flex justify-content-between mb-4">Total Expenses <span class="text-end">R{{Total}}</span></h4>
+        <h5 class="mb-2">Expence Summary Per Category</h5>
          
         <table class="table">
             <thead>
@@ -40,33 +40,33 @@
             <tbody>
                 <tr>
                     <td>Daily</td>
-                    <td>{{daily}}</td>
+                    <td>R{{daily}}</td>
                 </tr>
                 
                 <tr>
                     <td>Weekly</td>
-                    <td>{{weekly}}</td>
+                    <td>R{{weekly}}</td>
                 </tr>
                 <tr>
                     <td>Weekday</td>
-                    <td>{{weekday}}</td>
+                    <td>R{{weekday}}</td>
                 </tr>
                 <tr>
                     <td>Weekend</td>
-                    <td>{{weekend}}</td>
+                    <td>R{{weekend}}</td>
                 </tr>
                 <tr>
                     <td>Once-off</td>
-                    <td>{{onceOff}}</td>
+                    <td>R{{onceOff}}</td>
                 </tr>
                 <tr>
                     <td>Monthly</td>
-                    <td>{{monthly}}</td>
+                    <td>R{{monthly}}</td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <div class="expenses-link text-center container">
+    <div class="expenses-link text-center container mb-5">
         <a href="/expenses" class="">View expenses</a>
     </div>
     

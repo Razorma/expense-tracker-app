@@ -1,0 +1,30 @@
+<div class="container">
+    <h1 class="text-center h3 mt-5">Expense Tracker App</h1>
+    <h5 class="my-3">All Expenses</h5>
+    <table class="table">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Catagory</th>
+                    <th>Total</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                 {{#each allExpenses}}
+                <tr>
+                    <td>{{expense_text}}</td>
+                    <td>{{category_type}}</td>
+                    <td>R{{total}}</td>
+                    <form  action="/expenses" method="post">
+                    <input type="hidden" name="expenseId" value="{{id}}">
+                     <td><button type="submit">Delete</button></td>
+                    </form>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+    <a href="/">Back to home</a>
+</div>
