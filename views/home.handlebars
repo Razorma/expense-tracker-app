@@ -1,3 +1,50 @@
-<div class="container">
-    <h1>all i can</h1>
-</div>
+<main class="container-fluid p-0 m-0">
+    <h1 class="text-center h3">Expense Tracker App</h1>
+    <form class="add-expense container ">
+        <p class="h5">Add Expense</p>
+        <div class="form-group m-0 mt-2">
+          <label for="description ">Description</label>
+          <input type="text" class="form-control" id="description" name="description" placeholder="Enter description" required>
+        </div>
+        <div class="form-group m-0 mt-2">
+          <label for="amount">Amount</label>
+          <input type="text" class="form-control" id="amount" placeholder="Enter Amount" name="amount" required>
+        </div>
+        <div class="form-group m-0 mt-2">
+          <label for="cadegory">Category</label>
+          <select id="cadegory" name="cadegory" class="col mt-2 form-select cadegory " required>
+            <option value="" data-name="">Select Brand</option>
+            <option value="daily" data-name="daily">Daily</option>
+            <option value="weekly" data-name="weekly">Weekly</option>
+            <option value="weekday" data-name="weekday">Weekday</option>
+            <option value="weekend" data-name="weekend">Weekend</option>
+            <option value="once-off" data-name="once-off">Once-off</option>
+            <option value="monthly" data-name="monthly">Monthly</option>
+          </select>
+        </div>
+        <button type="submit">Add Experiance</button>
+    </form>
+    <div class="expense-response container">
+        <h4 class="d-flex justify-content-between">Total Expenses <span class="text-end">0.00</span></h4>
+        <h5>Expence Summary Per Category</h5>
+         
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Catagory</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>dailly</td>
+                    <td>12.00</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="expenses-link text-center container">
+        <a href="/expenses" class="">View expenses</a>
+    </div>
+    
+</main>

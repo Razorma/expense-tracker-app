@@ -44,7 +44,7 @@ app.use(cookieParser());
 
 
 app.get('/',function(req,res,next){
-    req.render('home')
+    res.render('home')
 })
 
 
