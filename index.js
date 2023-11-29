@@ -7,6 +7,7 @@ import session from "express-session";
 import bcrypt from "bcrypt";
 import dotenv from 'dotenv'
 import cookieParser from "cookie-parser"
+import ExpenseTracker from "./service/expence.js";
 dotenv.config();
 
 
@@ -16,6 +17,8 @@ const pgp = pgPromise();
 const connectionString = process.env.DATABASE_URL 
 
 const db = pgp({ connectionString});
+
+const expense = ExpenseTracker(db)
 
 app.use(session({ 
   secret: 'Razorma', 
