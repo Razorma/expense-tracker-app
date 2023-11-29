@@ -37,8 +37,7 @@ describe("The Expense Tracker Function", function () {
         await expenseTracker.addExpense(expenseText,categoryId, amount,total)
 
         const expenses = await expenseTracker.allExpenses()
-        // `SELECT * FROM expense;`
-        // const checkTable = await db.any(checkTableQuery)
+  
      
         assert.strictEqual(expenses.length, 1);
     });

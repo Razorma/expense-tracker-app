@@ -26,7 +26,7 @@
         <button type="submit">Add Experiance</button>
     </form>
     <div class="expense-response container">
-        <h4 class="d-flex justify-content-between">Total Expenses <span class="text-end">0.00</span></h4>
+        <h4 class="d-flex justify-content-between">Total Expenses <span class="text-end">{{Total}}</span></h4>
         <h5>Expence Summary Per Category</h5>
          
         <table class="table">
@@ -36,10 +36,32 @@
                     <th>Total</th>
                 </tr>
             </thead>
+
             <tbody>
                 <tr>
-                    <td>dailly</td>
-                    <td>12.00</td>
+                    <td>Daily</td>
+                    <td>{{daily}}</td>
+                </tr>
+                
+                <tr>
+                    <td>Weekly</td>
+                    <td>{{weekly}}</td>
+                </tr>
+                <tr>
+                    <td>Weekday</td>
+                    <td>{{weekday}}</td>
+                </tr>
+                <tr>
+                    <td>Weekend</td>
+                    <td>{{weekend}}</td>
+                </tr>
+                <tr>
+                    <td>Once-off</td>
+                    <td>{{onceOff}}</td>
+                </tr>
+                <tr>
+                    <td>Monthly</td>
+                    <td>{{monthly}}</td>
                 </tr>
             </tbody>
         </table>

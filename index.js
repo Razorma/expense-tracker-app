@@ -46,7 +46,34 @@ app.use(cookieParser());
 
 
 
-app.get('/',function(req,res,next){
+app.get('/', async function(req,res,next){
+    try {
+        // id | category_type
+//     ----+---------------
+//       1 | weekly
+//       2 | monthly
+//       3 | weekday
+//       4 | weekend
+//       5 | once-off
+//       6 | daily 
+        let money = 0
+        const Daily = await expense.expensesForCategory(6)         
+        const Weekly = await expense.expensesForCategory(1) 
+        const Weekday = await expense.expensesForCategory(3) 
+        const Weekend = await expense.expensesForCategory(4) 
+        const OnceOff = await expense.expensesForCategory(5) 
+        const Monthly = await expense.expensesForCategory(2) 
+        console.log("lolo")
+        const Total = await expense.categoryTotals() || money.toFixed(2)
+        res.render('home',{ Total,Daily,Weekly, Weekday, Weekend,OnceOff,Monthly})
+    } catch (error) {
+        console.log(error.message)
+        res.render('home')
+    }
+    
+})
+app.post('/',function(req,res,next){
+    const {} = req.body
     res.render('home')
 })
 

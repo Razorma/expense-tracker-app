@@ -55,6 +55,7 @@ export default function ExpenseTracker(db){
     // console.log(await deleteExpense(1))
     // console.log(await allExpenses())
     // console.log(await categoryTotals())
+    //  console.log(await expensesForCategory(4))
 
 
     return{
